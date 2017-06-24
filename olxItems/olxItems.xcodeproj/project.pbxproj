@@ -12,6 +12,7 @@
 		FB20FAB11EFEB9DC007CB81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAAF1EFEB9DC007CB81B /* Main.storyboard */; };
 		FB20FAB31EFEB9DC007CB81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */; };
 		FB20FAB61EFEB9DC007CB81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */; };
+		FB20FAC01EFEC7B0007CB81B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB20FABF1EFEC7B0007CB81B /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB20FAB51EFEB9DC007CB81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB20FAB71EFEB9DC007CB81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB20FABF1EFEC7B0007CB81B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB20FAC01EFEC7B0007CB81B /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				FB20FAAA1EFEB9DC007CB81B /* olxItems */,
 				FB20FAA91EFEB9DC007CB81B /* Products */,
+				FB20FABE1EFEC7B0007CB81B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +68,14 @@
 			path = olxItems;
 			sourceTree = "<group>";
 		};
+		FB20FABE1EFEC7B0007CB81B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB20FABF1EFEC7B0007CB81B /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +86,7 @@
 				FB20FAA41EFEB9DC007CB81B /* Sources */,
 				FB20FAA51EFEB9DC007CB81B /* Frameworks */,
 				FB20FAA61EFEB9DC007CB81B /* Resources */,
+				FB20FABD1EFEC630007CB81B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -131,6 +144,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FB20FABD1EFEC630007CB81B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB20FAA41EFEB9DC007CB81B /* Sources */ = {
