@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB20FAAC1EFEB9DC007CB81B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAAB1EFEB9DC007CB81B /* AppDelegate.swift */; };
+		FB20FAAE1EFEB9DC007CB81B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAAD1EFEB9DC007CB81B /* ViewController.swift */; };
+		FB20FAB11EFEB9DC007CB81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAAF1EFEB9DC007CB81B /* Main.storyboard */; };
+		FB20FAB31EFEB9DC007CB81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */; };
+		FB20FAB61EFEB9DC007CB81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FB20FAA81EFEB9DC007CB81B /* olxItems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = olxItems.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB20FAAB1EFEB9DC007CB81B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FB20FAAD1EFEB9DC007CB81B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB20FAB01EFEB9DC007CB81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB20FAB51EFEB9DC007CB81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FB20FAB71EFEB9DC007CB81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB20FAA51EFEB9DC007CB81B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB20FA9F1EFEB9DC007CB81B = {
+			isa = PBXGroup;
+			children = (
+				FB20FAAA1EFEB9DC007CB81B /* olxItems */,
+				FB20FAA91EFEB9DC007CB81B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB20FAA91EFEB9DC007CB81B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB20FAA81EFEB9DC007CB81B /* olxItems.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB20FAAA1EFEB9DC007CB81B /* olxItems */ = {
+			isa = PBXGroup;
+			children = (
+				FB20FAAB1EFEB9DC007CB81B /* AppDelegate.swift */,
+				FB20FAAD1EFEB9DC007CB81B /* ViewController.swift */,
+				FB20FAAF1EFEB9DC007CB81B /* Main.storyboard */,
+				FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */,
+				FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */,
+				FB20FAB71EFEB9DC007CB81B /* Info.plist */,
+			);
+			path = olxItems;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB20FAA71EFEB9DC007CB81B /* olxItems */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB20FABA1EFEB9DC007CB81B /* Build configuration list for PBXNativeTarget "olxItems" */;
+			buildPhases = (
+				FB20FAA41EFEB9DC007CB81B /* Sources */,
+				FB20FAA51EFEB9DC007CB81B /* Frameworks */,
+				FB20FAA61EFEB9DC007CB81B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = olxItems;
+			productName = olxItems;
+			productReference = FB20FAA81EFEB9DC007CB81B /* olxItems.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB20FAA01EFEB9DC007CB81B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = dansTeam;
+				TargetAttributes = {
+					FB20FAA71EFEB9DC007CB81B = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = AEWQUX8MPM;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FB20FAA31EFEB9DC007CB81B /* Build configuration list for PBXProject "olxItems" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FB20FA9F1EFEB9DC007CB81B;
+			productRefGroup = FB20FAA91EFEB9DC007CB81B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB20FAA71EFEB9DC007CB81B /* olxItems */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB20FAA61EFEB9DC007CB81B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB20FAB61EFEB9DC007CB81B /* LaunchScreen.storyboard in Resources */,
+				FB20FAB31EFEB9DC007CB81B /* Assets.xcassets in Resources */,
+				FB20FAB11EFEB9DC007CB81B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB20FAA41EFEB9DC007CB81B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB20FAAE1EFEB9DC007CB81B /* ViewController.swift in Sources */,
+				FB20FAAC1EFEB9DC007CB81B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FB20FAAF1EFEB9DC007CB81B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB20FAB01EFEB9DC007CB81B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB20FAB51EFEB9DC007CB81B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FB20FAB81EFEB9DC007CB81B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FB20FAB91EFEB9DC007CB81B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB20FABB1EFEB9DC007CB81B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				INFOPLIST_FILE = olxItems/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dansTeam.olxItems;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FB20FABC1EFEB9DC007CB81B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				INFOPLIST_FILE = olxItems/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dansTeam.olxItems;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB20FAA31EFEB9DC007CB81B /* Build configuration list for PBXProject "olxItems" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB20FAB81EFEB9DC007CB81B /* Debug */,
+				FB20FAB91EFEB9DC007CB81B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB20FABA1EFEB9DC007CB81B /* Build configuration list for PBXNativeTarget "olxItems" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB20FABB1EFEB9DC007CB81B /* Debug */,
+				FB20FABC1EFEB9DC007CB81B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB20FAA01EFEB9DC007CB81B /* Project object */;
+}
