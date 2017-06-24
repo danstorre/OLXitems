@@ -12,8 +12,19 @@
 		FB20FAB11EFEB9DC007CB81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAAF1EFEB9DC007CB81B /* Main.storyboard */; };
 		FB20FAB31EFEB9DC007CB81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */; };
 		FB20FAB61EFEB9DC007CB81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */; };
-		FB20FAC01EFEC7B0007CB81B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB20FABF1EFEC7B0007CB81B /* Alamofire.framework */; };
+		FB20FAD61EFECFA4007CB81B /* olxItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */; };
+		FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB20FAD81EFECFA4007CB81B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB20FAA01EFEB9DC007CB81B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB20FAA71EFEB9DC007CB81B;
+			remoteInfo = olxItems;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FB20FAA81EFEB9DC007CB81B /* olxItems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = olxItems.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,7 +34,10 @@
 		FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB20FAB51EFEB9DC007CB81B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB20FAB71EFEB9DC007CB81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB20FABF1EFEC7B0007CB81B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		FB20FAD31EFECFA4007CB81B /* olxItemsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = olxItemsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = olxItemsTests.swift; sourceTree = "<group>"; };
+		FB20FAD71EFECFA4007CB81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +45,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB20FAC01EFEC7B0007CB81B /* Alamofire.framework in Frameworks */,
+				FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB20FAD01EFECFA4007CB81B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				FB20FAAA1EFEB9DC007CB81B /* olxItems */,
+				FB20FAD41EFECFA4007CB81B /* olxItemsTests */,
 				FB20FAA91EFEB9DC007CB81B /* Products */,
 				FB20FABE1EFEC7B0007CB81B /* Frameworks */,
 			);
@@ -51,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				FB20FAA81EFEB9DC007CB81B /* olxItems.app */,
+				FB20FAD31EFECFA4007CB81B /* olxItemsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,9 +94,18 @@
 		FB20FABE1EFEC7B0007CB81B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FB20FABF1EFEC7B0007CB81B /* Alamofire.framework */,
+				FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB20FAD41EFECFA4007CB81B /* olxItemsTests */ = {
+			isa = PBXGroup;
+			children = (
+				FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */,
+				FB20FAD71EFECFA4007CB81B /* Info.plist */,
+			);
+			path = olxItemsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,7 +118,7 @@
 				FB20FAA41EFEB9DC007CB81B /* Sources */,
 				FB20FAA51EFEB9DC007CB81B /* Frameworks */,
 				FB20FAA61EFEB9DC007CB81B /* Resources */,
-				FB20FABD1EFEC630007CB81B /* ShellScript */,
+				FB20FAE51EFED3AD007CB81B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -96,6 +128,24 @@
 			productName = olxItems;
 			productReference = FB20FAA81EFEB9DC007CB81B /* olxItems.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FB20FAD21EFECFA4007CB81B /* olxItemsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB20FADA1EFECFA4007CB81B /* Build configuration list for PBXNativeTarget "olxItemsTests" */;
+			buildPhases = (
+				FB20FACF1EFECFA4007CB81B /* Sources */,
+				FB20FAD01EFECFA4007CB81B /* Frameworks */,
+				FB20FAD11EFECFA4007CB81B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB20FAD91EFECFA4007CB81B /* PBXTargetDependency */,
+			);
+			name = olxItemsTests;
+			productName = olxItemsTests;
+			productReference = FB20FAD31EFECFA4007CB81B /* olxItemsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -111,6 +161,12 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = AEWQUX8MPM;
 						ProvisioningStyle = Automatic;
+					};
+					FB20FAD21EFECFA4007CB81B = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = AEWQUX8MPM;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FB20FAA71EFEB9DC007CB81B;
 					};
 				};
 			};
@@ -128,6 +184,7 @@
 			projectRoot = "";
 			targets = (
 				FB20FAA71EFEB9DC007CB81B /* olxItems */,
+				FB20FAD21EFECFA4007CB81B /* olxItemsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -143,10 +200,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB20FAD11EFECFA4007CB81B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FB20FABD1EFEC630007CB81B /* ShellScript */ = {
+		FB20FAE51EFED3AD007CB81B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -173,7 +237,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB20FACF1EFECFA4007CB81B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB20FAD61EFECFA4007CB81B /* olxItemsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB20FAD91EFECFA4007CB81B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB20FAA71EFEB9DC007CB81B /* olxItems */;
+			targetProxy = FB20FAD81EFECFA4007CB81B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FB20FAAF1EFEB9DC007CB81B /* Main.storyboard */ = {
@@ -236,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -280,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -293,6 +373,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = olxItems/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -307,12 +391,44 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = olxItems/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dansTeam.olxItems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		FB20FADB1EFECFA4007CB81B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				INFOPLIST_FILE = olxItemsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dansTeam.olxItemsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/olxItems.app/olxItems";
+			};
+			name = Debug;
+		};
+		FB20FADC1EFECFA4007CB81B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				INFOPLIST_FILE = olxItemsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dansTeam.olxItemsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/olxItems.app/olxItems";
 			};
 			name = Release;
 		};
@@ -335,6 +451,16 @@
 				FB20FABC1EFEB9DC007CB81B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB20FADA1EFECFA4007CB81B /* Build configuration list for PBXNativeTarget "olxItemsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB20FADB1EFECFA4007CB81B /* Debug */,
+				FB20FADC1EFECFA4007CB81B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
