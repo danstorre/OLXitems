@@ -14,6 +14,8 @@
 		FB20FAB61EFEB9DC007CB81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */; };
 		FB20FAD61EFECFA4007CB81B /* olxItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */; };
 		FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */; };
+		FB8C36001EFED95500CBFB46 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C35FF1EFED95500CBFB46 /* Cache.framework */; };
+		FB8C36021EFED95700CBFB46 /* SwiftHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C36011EFED95700CBFB46 /* SwiftHash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = olxItemsTests.swift; sourceTree = "<group>"; };
 		FB20FAD71EFECFA4007CB81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		FB8C35FF1EFED95500CBFB46 /* Cache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cache.framework; path = Carthage/Build/iOS/Cache.framework; sourceTree = "<group>"; };
+		FB8C36011EFED95700CBFB46 /* SwiftHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHash.framework; path = Carthage/Build/iOS/SwiftHash.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */,
+				FB8C36001EFED95500CBFB46 /* Cache.framework in Frameworks */,
+				FB8C36021EFED95700CBFB46 /* SwiftHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +100,8 @@
 		FB20FABE1EFEC7B0007CB81B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB8C36011EFED95700CBFB46 /* SwiftHash.framework */,
+				FB8C35FF1EFED95500CBFB46 /* Cache.framework */,
 				FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */,
 			);
 			name = Frameworks;
