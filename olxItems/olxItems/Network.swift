@@ -30,7 +30,7 @@ class Network: NSObject {
         
         let getRequest = asURLRequest(url: url, method: HTTPMethod.get, and: jsonBody)
             
-        Alamofire.request(getRequest).validate().responseData { response in
+        Alamofire.request(getRequest).validate().responseJSON { response in
             switch response.result {
             case .success:
                 if let result = response.result.value {

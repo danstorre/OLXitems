@@ -14,8 +14,6 @@
 		FB20FAB61EFEB9DC007CB81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */; };
 		FB20FAD61EFECFA4007CB81B /* olxItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */; };
 		FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */; };
-		FB8C36001EFED95500CBFB46 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C35FF1EFED95500CBFB46 /* Cache.framework */; };
-		FB8C36021EFED95700CBFB46 /* SwiftHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C36011EFED95700CBFB46 /* SwiftHash.framework */; };
 		FB8C36081F00185D00CBFB46 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C36071F00185D00CBFB46 /* Item.swift */; };
 		FB8C360A1F0018DD00CBFB46 /* ItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C36091F0018DD00CBFB46 /* ItemsManager.swift */; };
 		FB8C360C1F001CFD00CBFB46 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C360B1F001CFD00CBFB46 /* Network.swift */; };
@@ -62,8 +60,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */,
-				FB8C36001EFED95500CBFB46 /* Cache.framework in Frameworks */,
-				FB8C36021EFED95700CBFB46 /* SwiftHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
