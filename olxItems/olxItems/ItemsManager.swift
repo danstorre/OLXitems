@@ -9,23 +9,35 @@
 import Foundation
 
 
-protocol ItemProviderDelegate {
- 
-    func getLastLocations(nameOfItem: String, completionHandlerForGettingItems: @escaping (_ success: Bool, _ items: [Item]?, _ error: NSError?) -> Void)
+protocol ItemProviderAPIProtocol {
+
+    func getItems(item: String, offset: Int?, completionHandlerForGettingItems: @escaping (_ success: Bool, _ locations: [Item]?, _ errorString: String?) -> Void)
+
 }
 
-class ItemsManager : NSObject {
-
+class ItemsManager : NSObject{
+    
+    //MARK:- Properties
     var networkManager : Network
     static let shared = ItemsManager()
     
+    //MARK:- InitMethods
     override init(){
         networkManager = Network(scheme: Constants.Domain.apiScheme, host: Constants.Domain.apiHost)
         super.init()
     }
     
-    func getItems(item: String, offset: Int? = nil, completionHandlerForGettingItems: @escaping (_ success: Bool, _ locations: [Item]?, _ errorString: String?) -> Void) {
     
+}
+
+
+
+//MARK:- Item API Methods
+
+extension ItemsManager : ItemProviderAPIProtocol{
+    
+    func getItems(item: String, offset: Int? = nil, completionHandlerForGettingItems: @escaping (_ success: Bool, _ locations: [Item]?, _ errorString: String?) -> Void) {
+        
         let completionHandlerItemsFromServer = { (result: AnyObject?, error: NSError?) -> Void in
             
             func sendError(_ error: String) {
@@ -47,13 +59,15 @@ class ItemsManager : NSObject {
             
         }
         
+        let paramOffSet : Int = offset ?? 0
+        
         let params : [String:AnyObject] =
             [Constants.UrlKeys.searchTerm: item as AnyObject,
              Constants.UrlKeys.location: Constants.Domain.location as AnyObject,
              Constants.UrlKeys.pageSize: 10 as AnyObject,
-             Constants.UrlKeys.offset: offset as AnyObject]
+             Constants.UrlKeys.offset: paramOffSet as AnyObject]
         
         networkManager.getMethod(params: params, pathMethod: Constants.Methods.searchItems, completionHandlerForGet: completionHandlerItemsFromServer)
     }
+    
 }
-

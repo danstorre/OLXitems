@@ -13,7 +13,13 @@
 		FB20FAB31EFEB9DC007CB81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB21EFEB9DC007CB81B /* Assets.xcassets */; };
 		FB20FAB61EFEB9DC007CB81B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAB41EFEB9DC007CB81B /* LaunchScreen.storyboard */; };
 		FB20FAD61EFECFA4007CB81B /* olxItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */; };
-		FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */; };
+		FB24D8D21F02E2A9007DE46F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8CF1F02E2A9007DE46F /* Alamofire.framework */; };
+		FB24D8D31F02E2A9007DE46F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8CF1F02E2A9007DE46F /* Alamofire.framework */; };
+		FB24D8D41F02E2A9007DE46F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D01F02E2A9007DE46F /* RxCocoa.framework */; };
+		FB24D8D51F02E2A9007DE46F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D01F02E2A9007DE46F /* RxCocoa.framework */; };
+		FB24D8D61F02E2A9007DE46F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D11F02E2A9007DE46F /* RxSwift.framework */; };
+		FB24D8D71F02E2A9007DE46F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D11F02E2A9007DE46F /* RxSwift.framework */; };
+		FB24D8D91F02E6E6007DE46F /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */; };
 		FB8C36081F00185D00CBFB46 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C36071F00185D00CBFB46 /* Item.swift */; };
 		FB8C360A1F0018DD00CBFB46 /* ItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C36091F0018DD00CBFB46 /* ItemsManager.swift */; };
 		FB8C360C1F001CFD00CBFB46 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C360B1F001CFD00CBFB46 /* Network.swift */; };
@@ -43,9 +49,10 @@
 		FB20FAD31EFECFA4007CB81B /* olxItemsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = olxItemsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB20FAD51EFECFA4007CB81B /* olxItemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = olxItemsTests.swift; sourceTree = "<group>"; };
 		FB20FAD71EFECFA4007CB81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		FB8C35FF1EFED95500CBFB46 /* Cache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cache.framework; path = Carthage/Build/iOS/Cache.framework; sourceTree = "<group>"; };
-		FB8C36011EFED95700CBFB46 /* SwiftHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHash.framework; path = Carthage/Build/iOS/SwiftHash.framework; sourceTree = "<group>"; };
+		FB24D8CF1F02E2A9007DE46F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		FB24D8D01F02E2A9007DE46F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		FB24D8D11F02E2A9007DE46F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		FB8C36071F00185D00CBFB46 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FB8C36091F0018DD00CBFB46 /* ItemsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsManager.swift; sourceTree = "<group>"; };
 		FB8C360B1F001CFD00CBFB46 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -59,7 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB8C35FE1EFED4A600CBFB46 /* Alamofire.framework in Frameworks */,
+				FB24D8D41F02E2A9007DE46F /* RxCocoa.framework in Frameworks */,
+				FB24D8D21F02E2A9007DE46F /* Alamofire.framework in Frameworks */,
+				FB24D8D61F02E2A9007DE46F /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB24D8D51F02E2A9007DE46F /* RxCocoa.framework in Frameworks */,
+				FB24D8D31F02E2A9007DE46F /* Alamofire.framework in Frameworks */,
+				FB24D8D71F02E2A9007DE46F /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,9 +123,9 @@
 		FB20FABE1EFEC7B0007CB81B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FB8C36011EFED95700CBFB46 /* SwiftHash.framework */,
-				FB8C35FF1EFED95500CBFB46 /* Cache.framework */,
-				FB8C35FD1EFED4A600CBFB46 /* Alamofire.framework */,
+				FB24D8CF1F02E2A9007DE46F /* Alamofire.framework */,
+				FB24D8D01F02E2A9007DE46F /* RxCocoa.framework */,
+				FB24D8D11F02E2A9007DE46F /* RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,6 +169,7 @@
 		FB8C36061F00182600CBFB46 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -198,6 +211,7 @@
 				FB20FACF1EFECFA4007CB81B /* Sources */,
 				FB20FAD01EFECFA4007CB81B /* Frameworks */,
 				FB20FAD11EFECFA4007CB81B /* Resources */,
+				FB24D8CE1F02E169007DE46F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -279,9 +293,32 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		FB24D8CE1F02E169007DE46F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -295,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB8C360C1F001CFD00CBFB46 /* Network.swift in Sources */,
+				FB24D8D91F02E6E6007DE46F /* ItemTableViewCell.swift in Sources */,
 				FB20FAAE1EFEB9DC007CB81B /* ItemsSearchViewController.swift in Sources */,
 				FB8C36081F00185D00CBFB46 /* Item.swift in Sources */,
 				FB8C360A1F0018DD00CBFB46 /* ItemsManager.swift in Sources */,
@@ -477,6 +515,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = olxItemsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dansTeam.olxItemsTests;
@@ -491,6 +533,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = olxItemsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dansTeam.olxItemsTests;
