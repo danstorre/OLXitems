@@ -14,12 +14,32 @@ struct ItemsSearchViewModel {
 
     
     let disposeBag = DisposeBag()
-    var driverItems : Driver<[Item]> {
-        return self.driverItems.asDriver()
+    
+    typealias DriverSearchBarText = Driver<String?>
+    
+    let itemFromSearchDriver : Driver<[Item]>
+    let isSearching : Bool = false
+    
+    
+    init(driverSearchBar: DriverSearchBarText){
+    
+        itemFromSearchDriver = driverSearchBar.throttle(0.3)
+            .distinctUntilChanged { (first, second) -> Bool in
+                return (first == second)
+            }
+            .flatMapLatest { (query) -> SharedSequence<DriverSharingStrategy, [Item]> in
+                
+                if query == "" {
+                    return Driver.just([Item]())
+                }
+                return ItemsSearchViewModel.getItems(itemName: query!).asDriver(onErrorJustReturn: [Item]())
+        }
+        
+        
+        
     }
     
-    
-    func getItems(itemName: String) -> Observable<[Item]> {
+    static func getItems(itemName: String) -> Observable<[Item]> {
         return Observable<[Item]>.create { observer in
             
             ItemsManager.shared.getItems(item: itemName, completionHandlerForGettingItems: { (success, items, erroString) in
