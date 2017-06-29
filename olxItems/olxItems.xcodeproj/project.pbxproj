@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB14FB0A1F048D61000F0F7E /* SearchingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB14FB091F048D60000F0F7E /* SearchingTableViewCell.swift */; };
 		FB20FAAC1EFEB9DC007CB81B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAAB1EFEB9DC007CB81B /* AppDelegate.swift */; };
 		FB20FAAE1EFEB9DC007CB81B /* ItemsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB20FAAD1EFEB9DC007CB81B /* ItemsSearchViewController.swift */; };
 		FB20FAB11EFEB9DC007CB81B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB20FAAF1EFEB9DC007CB81B /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB14FB091F048D60000F0F7E /* SearchingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingTableViewCell.swift; sourceTree = "<group>"; };
 		FB20FAA81EFEB9DC007CB81B /* olxItems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = olxItems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB20FAAB1EFEB9DC007CB81B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB20FAAD1EFEB9DC007CB81B /* ItemsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsSearchViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */,
+				FB14FB091F048D60000F0F7E /* SearchingTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				FB24D8D91F02E6E6007DE46F /* ItemTableViewCell.swift in Sources */,
 				FB20FAAE1EFEB9DC007CB81B /* ItemsSearchViewController.swift in Sources */,
 				FB8C36081F00185D00CBFB46 /* Item.swift in Sources */,
+				FB14FB0A1F048D61000F0F7E /* SearchingTableViewCell.swift in Sources */,
 				FB8C360A1F0018DD00CBFB46 /* ItemsManager.swift in Sources */,
 				FB20FAAC1EFEB9DC007CB81B /* AppDelegate.swift in Sources */,
 				FB8C36131F00208200CBFB46 /* Reachability.swift in Sources */,

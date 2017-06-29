@@ -27,17 +27,60 @@ class ItemsSearchViewController: UIViewController {
         viewModel = ItemsSearchViewModel(driverSearchBar: searchItemBar.rx.text.asDriver())
         topActivity.stopAnimating()
         lowActivity.stopAnimating()
+        tableItemsView.tableFooterView = UIView()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
+        /* this is commented out to just have a small peek about how rx cocoa can help us out
         viewModel?.itemFromSearchDriver.skip(1).drive(tableItemsView.rx.items(cellIdentifier: "Cell")) { (index, item, cell) in
             cell.textLabel?.text = item.title
-            }.disposed(by: disposeBag)
-                
-    
+            }.disposed(by: disposeBag)*/
+        
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        let _ = viewModel.itemFromSearchDriver.skip(1).drive( onNext: { [weak self] (newItems) in
+            
+            guard let `self` = self else { return }
+            guard let viewModel = self.viewModel else { return }
+            viewModel.itemsVar.value = newItems
+            self.tableItemsView.reloadData()
+            viewModel.isSearchingVar.value = false
+        }, onCompleted: nil,
+        onDisposed: {
+            print("disposed itemFromSearchDriver")
+        })
+        
+        
+        searchItemBar.rx.text.asDriver().skip(1).drive(onNext: { [weak self] (query) in
+            guard let `self` = self else { return }
+            guard let viewModel = self.viewModel else { return }
+            viewModel.isSearchingVar.value =  query == "" ? false : true
+            
+            }, onCompleted: nil, onDisposed: {
+                print("disposed itemFromSearchDriver")
+        })
+        
+        
+        viewModel.isSearching.asDriver().skip(1).drive(onNext: { [weak self] (isSearching) in
+            guard let `self` = self else { return }
+            
+            if isSearching {
+                self.topActivity.startAnimating()
+                viewModel.itemsVar.value = [Item]()
+                viewModel.itemsVar.value.append(Item())
+                self.tableItemsView.reloadData()
+            }else{
+                self.topActivity.stopAnimating()
+            }
+            
+            
+            
+        }, onCompleted: nil, onDisposed: nil)
     
     }
 
@@ -52,6 +95,40 @@ class ItemsSearchViewController: UIViewController {
     }
 
 
+}
+
+extension ItemsSearchViewController : UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let viewModel = viewModel else {
+            return 0
+        }
+        
+        return viewModel.itemsVar.value.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let viewModel = viewModel else {
+            return UITableViewCell()
+        }
+
+        guard let itemTitle = viewModel.itemsVar.value[indexPath.row].title, itemTitle != "" else {
+            let searchingCell = tableView.dequeueReusableCell(withIdentifier: "Searching", for: indexPath) as! SearchingTableViewCell
+            searchingCell.activity.startAnimating()
+            searchingCell.message.text = "Searching"
+            return searchingCell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! ItemTableViewCell
+        
+        cell.textLabel?.text = itemTitle
+        
+        return cell
+    }
+    
+    
 }
 
 extension ItemsSearchViewController : UITableViewDelegate {

@@ -17,12 +17,26 @@ struct ItemsSearchViewModel {
     
     typealias DriverSearchBarText = Driver<String?>
     
+    // MARK: RxSwift Observers
+    
     let itemFromSearchDriver : Driver<[Item]>
-    let isSearching : Bool = false
     
+    var isSearching : Driver<Bool> {
+        return isSearchingVar.asDriver()
+    }
     
+    var items: Driver<[Item]> {
+        return itemsVar.asDriver()
+    }
+    
+    // MARK: RxSwift vars
+    var isSearchingVar = Variable<Bool>(false)
+    var itemsVar = Variable<[Item]>([Item]())
+    
+
+    // MARK: init methods
     init(driverSearchBar: DriverSearchBarText){
-    
+        
         itemFromSearchDriver = driverSearchBar.throttle(0.3)
             .distinctUntilChanged { (first, second) -> Bool in
                 return (first == second)
@@ -33,12 +47,11 @@ struct ItemsSearchViewModel {
                     return Driver.just([Item]())
                 }
                 return ItemsSearchViewModel.getItems(itemName: query!).asDriver(onErrorJustReturn: [Item]())
-        }
-        
-        
+            }
         
     }
     
+    // MARK: init methods
     static func getItems(itemName: String) -> Observable<[Item]> {
         return Observable<[Item]>.create { observer in
             
