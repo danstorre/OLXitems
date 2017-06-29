@@ -141,9 +141,19 @@
 			path = olxItemsTests;
 			sourceTree = "<group>";
 		};
+		FB6E81411F049BDC000306F5 /* Network API */ = {
+			isa = PBXGroup;
+			children = (
+				FB8C360B1F001CFD00CBFB46 /* Network.swift */,
+				FB8C36121F00208200CBFB46 /* Reachability.swift */,
+			);
+			name = "Network API";
+			sourceTree = "<group>";
+		};
 		FB8C36031F00180400CBFB46 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB6E81411F049BDC000306F5 /* Network API */,
 				FB8C36071F00185D00CBFB46 /* Item.swift */,
 				FB8C36141F00223D00CBFB46 /* Constants.swift */,
 			);
@@ -161,9 +171,8 @@
 		FB8C36051F00181500CBFB46 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FB8C36111F00204C00CBFB46 /* Items */,
-				FB8C360B1F001CFD00CBFB46 /* Network.swift */,
-				FB8C36121F00208200CBFB46 /* Reachability.swift */,
+				FB8C360F1F00203E00CBFB46 /* ItemsSearchViewModel.swift */,
+				FB8C36091F0018DD00CBFB46 /* ItemsManager.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -175,15 +184,6 @@
 				FB14FB091F048D60000F0F7E /* SearchingTableViewCell.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		FB8C36111F00204C00CBFB46 /* Items */ = {
-			isa = PBXGroup;
-			children = (
-				FB8C360F1F00203E00CBFB46 /* ItemsSearchViewModel.swift */,
-				FB8C36091F0018DD00CBFB46 /* ItemsManager.swift */,
-			);
-			name = Items;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -22,7 +22,7 @@ struct Item{
     var description : String?
     var price : Price?
     var thumbnailURL : String? = ""
-    var thumbnail : UIImage?
+    var thumbnail : Data?
     var mediumImageURL : String? = ""
     var mediumImage : UIImage?
     var fullImageURL : String? = ""
@@ -38,7 +38,7 @@ struct Item{
         description = ""
         price = Price(amount: 0, concurrency: "$")
         mediumImage = UIImage()
-        thumbnail = UIImage()
+        thumbnail = nil
         fullImage = UIImage()
         sold = false
         

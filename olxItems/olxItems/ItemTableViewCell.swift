@@ -9,7 +9,11 @@
 import UIKit
 
 class ItemTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var thumbNail: UIImageView!
+    @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

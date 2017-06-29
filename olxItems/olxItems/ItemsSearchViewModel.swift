@@ -15,6 +15,7 @@ struct ItemsSearchViewModel {
     
     let disposeBag = DisposeBag()
     
+    // alias of drivers that this view model can receive
     typealias DriverSearchBarText = Driver<String?>
     
     // MARK: RxSwift Observers
@@ -63,6 +64,24 @@ struct ItemsSearchViewModel {
             
             return Disposables.create()
         }
+    }
+    
+    func retrieveImage(from urlString: String, to index: Int) {
+        
+        if let url = URL(string: urlString) {
+            
+            if let data = try? Data(contentsOf: url) {
+                
+                DispatchQueue.main.async {
+                    
+                    if index < self.itemsVar.value.count {
+                        self.itemsVar.value[index].thumbnail = data
+                    }
+                    
+                }
+            }
+        }
+        
     }
     
 }

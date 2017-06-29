@@ -64,7 +64,39 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qe3-cU-0yI" id="BVl-UR-lCC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZFQ-wO-pBk">
+                                                    <rect key="frame" x="26" y="14" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gcG-fy-Ve5">
+                                                    <rect key="frame" x="9" y="-1" width="54" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="54" id="WFf-rS-Ipz"/>
+                                                        <constraint firstAttribute="height" constant="50" id="zoz-de-4rw"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ItemTitle" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Hhs-wi-vqO">
+                                                    <rect key="frame" x="76" y="14" width="281" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hhs-wi-vqO" firstAttribute="centerY" secondItem="ZFQ-wO-pBk" secondAttribute="centerY" id="1r1-tV-wdY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Hhs-wi-vqO" secondAttribute="trailing" constant="10" id="AMU-6H-5Aj"/>
+                                                <constraint firstItem="gcG-fy-Ve5" firstAttribute="centerY" secondItem="ZFQ-wO-pBk" secondAttribute="centerY" id="Ie1-u0-yb3"/>
+                                                <constraint firstItem="Hhs-wi-vqO" firstAttribute="leading" secondItem="BVl-UR-lCC" secondAttribute="leadingMargin" constant="68" id="VaL-hv-Tlf"/>
+                                                <constraint firstItem="ZFQ-wO-pBk" firstAttribute="leading" secondItem="BVl-UR-lCC" secondAttribute="leadingMargin" constant="18" id="Ymd-6u-G2p"/>
+                                                <constraint firstItem="ZFQ-wO-pBk" firstAttribute="centerY" secondItem="BVl-UR-lCC" secondAttribute="centerY" id="peg-eh-fII"/>
+                                                <constraint firstItem="gcG-fy-Ve5" firstAttribute="centerX" secondItem="ZFQ-wO-pBk" secondAttribute="centerX" id="vvf-d0-Amm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activity" destination="ZFQ-wO-pBk" id="Kb5-Zf-QDO"/>
+                                            <outlet property="itemTitle" destination="Hhs-wi-vqO" id="dfJ-lg-gGv"/>
+                                            <outlet property="thumbNail" destination="gcG-fy-Ve5" id="Qow-NP-l9D"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
