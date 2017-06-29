@@ -18,6 +18,7 @@ class ItemsSearchViewController: UIViewController {
     @IBOutlet weak var topActivity: UIActivityIndicatorView!
     @IBOutlet weak var lowActivity: UIActivityIndicatorView!
     
+    var refreshControl: UIRefreshControl!
     var viewModel : ItemsSearchViewModel?
     let disposeBag = DisposeBag()
     
@@ -28,6 +29,10 @@ class ItemsSearchViewController: UIViewController {
         topActivity.stopAnimating()
         lowActivity.stopAnimating()
         tableItemsView.tableFooterView = UIView()
+        
+        refreshControl = UIRefreshControl()
+        tableItemsView.addSubview(refreshControl)
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -43,6 +48,8 @@ class ItemsSearchViewController: UIViewController {
             return
         }
         
+        let _ = viewModel.itemFromSearchDriver.skip(1).drive(viewModel.lastSearchFromBar)
+        
         //Does stuff whenever an http response came
         let _ = viewModel.itemFromSearchDriver.skip(1).drive( onNext: { [weak self] (newItems) in
             
@@ -50,6 +57,7 @@ class ItemsSearchViewController: UIViewController {
             guard let viewModel = self.viewModel else { return }
             viewModel.itemsVar.value = newItems
             self.tableItemsView.reloadData()
+            self.refreshControl.endRefreshing()
             viewModel.isSearchingVar.value = false
         }, onCompleted: nil,
         onDisposed: {
@@ -78,6 +86,7 @@ class ItemsSearchViewController: UIViewController {
             
         }, onCompleted: nil, onDisposed: nil)
         
+        //Does stuff whenever items are updated
         viewModel.items.asDriver().skip(1).drive(onNext: {[weak self] (item) in
             guard let `self` = self else { return }
             guard let viewModel = self.viewModel else { return }
@@ -159,5 +168,20 @@ extension ItemsSearchViewController : UITableViewDataSource {
 
 extension ItemsSearchViewController : UITableViewDelegate {
 
-
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if refreshControl.isRefreshing {
+            
+            guard let viewModel = viewModel, let lastItems = try? viewModel.lastSearchFromBar.value() else {
+                return
+            }
+            
+            viewModel.itemsVar.value = lastItems
+            self.tableItemsView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    
 }

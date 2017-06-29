@@ -39,15 +39,16 @@
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-3b-9O0">
                                                     <rect key="frame" x="25" y="15" width="20" height="20"/>
                                                 </activityIndicatorView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14V-wJ-O9i">
-                                                    <rect key="frame" x="62" y="14" width="87" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14V-wJ-O9i">
+                                                    <rect key="frame" x="62" y="16" width="305" height="18"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VGo-3b-9O0" firstAttribute="leading" secondItem="KAx-4X-ILm" secondAttribute="leadingMargin" constant="17" id="2BH-3A-rtr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="14V-wJ-O9i" secondAttribute="trailing" id="OWL-KI-fK6"/>
                                                 <constraint firstItem="14V-wJ-O9i" firstAttribute="centerY" secondItem="VGo-3b-9O0" secondAttribute="centerY" id="Wjo-cB-HCS"/>
                                                 <constraint firstItem="14V-wJ-O9i" firstAttribute="leading" secondItem="VGo-3b-9O0" secondAttribute="trailing" constant="17" id="oxC-FU-8D7"/>
                                                 <constraint firstItem="VGo-3b-9O0" firstAttribute="centerY" secondItem="KAx-4X-ILm" secondAttribute="centerY" id="wCI-qM-z4D"/>

@@ -21,6 +21,7 @@ struct ItemsSearchViewModel {
     // MARK: RxSwift Observers
     
     let itemFromSearchDriver : Driver<[Item]>
+    let lastSearchFromBar : BehaviorSubject<[Item]> = BehaviorSubject(value: [Item]())
     
     var isSearching : Driver<Bool> {
         return isSearchingVar.asDriver()
@@ -29,6 +30,8 @@ struct ItemsSearchViewModel {
     var items: Driver<[Item]> {
         return itemsVar.asDriver()
     }
+    
+    
     
     // MARK: RxSwift vars
     var isSearchingVar = Variable<Bool>(false)
