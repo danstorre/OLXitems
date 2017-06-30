@@ -7,15 +7,40 @@
 //
 
 import UIKit
+import Cache
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var customCache : HybridCache?
+    
+    
+    func prepareCache(){
+        let config = Config(
+            // Expiry date that will be applied by default for every added object
+            // if it's not overridden in the add(key: object: expiry: completion:) method
+            expiry: .date(Date().addingTimeInterval(100000)),
+            /// The maximum number of objects in memory the cache should hold
+            memoryCountLimit: 0,
+            /// The maximum total cost that the cache can hold before it starts evicting objects
+            memoryTotalCostLimit: 0,
+            /// Maximum size of the disk cache storage (in bytes)
+            maxDiskSize: 10000,
+            // Where to store the disk cache. If nil, it is placed in an automatically generated directory in Caches
+            cacheDirectory: NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                                FileManager.SearchPathDomainMask.userDomainMask,
+                                                                true).first! + "/cache-in-documents"
+        )
+        
+        customCache = HybridCache(name: "ImageItems", config: config)
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        prepareCache()
         return true
     }
 

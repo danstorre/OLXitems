@@ -20,23 +20,36 @@ class ItemsSearchViewController: UIViewController {
     let disposeBag = DisposeBag()
     var selectedItem : Item? = nil
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var reachability: Reachability? = Reachability.networkReachabilityForInternetConnection()
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        reachability?.stopNotifier()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         viewModel = ItemsSearchViewModel(driverSearchBar: searchItemBar.rx.text.asDriver())
         
         tableItemsView.tableFooterView = UIView()
         refreshControl = UIRefreshControl()
         tableItemsView.addSubview(refreshControl)
+        searchItemBar.delegate = self
         
-        // Do any additional setup after loading the view, typically from a nib.
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
+        
+        _ = reachability?.startNotifier()
+        
     }
       
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        
+        checkReachability()
         
         guard let viewModel = viewModel else {
             return
@@ -66,7 +79,7 @@ class ItemsSearchViewController: UIViewController {
         })
         
         //Does stuff whenever search bar changes it's text
-        searchItemBar.rx.text.asDriver().skip(1).drive(onNext: { [weak self] (query) in
+        let _ = searchItemBar.rx.text.asDriver().skip(1).drive(onNext: { [weak self] (query) in
             guard let `self` = self else { return }
             guard let viewModel = self.viewModel else { return }
             
@@ -87,7 +100,7 @@ class ItemsSearchViewController: UIViewController {
         })
         
         //Does stuff whenever the app is searching for new items.
-        viewModel.isSearching.asDriver().skip(1).drive(onNext: { [weak self] (isSearching) in
+        let _ = viewModel.isSearching.asDriver().skip(1).drive(onNext: { [weak self] (isSearching) in
             guard let `self` = self else { return }
             
             if isSearching {
@@ -99,7 +112,7 @@ class ItemsSearchViewController: UIViewController {
         }, onCompleted: nil, onDisposed: nil)
         
         //Does stuff whenever items are updated
-        viewModel.items.asDriver().skip(1).drive(onNext: {[weak self] (item) in
+        let _ = viewModel.items.asDriver().skip(1).drive(onNext: {[weak self] (item) in
             guard let `self` = self else { return }
             
             self.tableItemsView.reloadData()
@@ -178,6 +191,8 @@ extension ItemsSearchViewController : UITableViewDataSource {
         
         cell.itemTitle.text = itemTitle
         
+    
+        
         if let imageThumnail = item.thumbnail {
             cell.activity.stopAnimating()
             cell.thumbNail.image = UIImage(data: imageThumnail)
@@ -186,9 +201,16 @@ extension ItemsSearchViewController : UITableViewDataSource {
             cell.thumbNail.image = UIImage()
             cell.activity.startAnimating()
             
+            
+            if let idItem = item.id, let data: Data = appDelegate.customCache!.object(forKey: "\(idItem)") {
+                cell.thumbNail.image = UIImage(data: data)
+            }else {
                 if let urlStringThumbnail = item.thumbnailURL {
                     viewModel.retrieveImage(from: urlStringThumbnail, to: indexPath.row)
                 }
+            }
+            
+            
             
             
         }
@@ -236,4 +258,43 @@ extension ItemsSearchViewController : UITableViewDelegate {
     }
     
     
+}
+
+
+extension ItemsSearchViewController {
+    
+    // MARK:- Reachabilty Methods
+    
+    func reachabilityDidChange(_ notification: Notification) {
+        checkReachability()
+    }
+    
+    func checkReachability() {
+        guard let r = reachability else { return }
+        guard r.isReachable else {
+            DispatchQueue.main.async {
+                let rootViewController : UIViewController? = UIApplication.shared.keyWindow?.rootViewController
+                
+                
+                guard let presentedViewController = rootViewController?.presentedViewController else {
+                    return rootViewController!.displayAlert("Check Your Internet Connection", completionHandler: {})
+                }
+                
+                presentedViewController.displayAlert("Check Your Internet Connection", completionHandler: {})
+                
+                
+            }
+            return
+        }
+    }
+    
+    
+}
+
+extension ItemsSearchViewController : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        searchBar.resignFirstResponder()
+    }
+
 }

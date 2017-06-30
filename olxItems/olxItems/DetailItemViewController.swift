@@ -33,12 +33,16 @@ class DetailItemViewController: UIViewController {
         super.viewWillAppear(animated)
         configureView()
         
-        viewModel?.imageItemDriver?.asDriver(onErrorJustReturn: Data()).drive(onNext: { [weak self] (dataImage) in
+       let _ = viewModel?.imageItemDriver?.asDriver(onErrorJustReturn: Data()).drive(onNext: { [weak self] (dataImage) in
             
             guard let `self` = self else {return }
+            guard let dataImage = dataImage else {return }
+        
             self.activity.stopAnimating()
-            self.itemImageView.image = UIImage(data: dataImage!)
-            
+            self.itemImageView.image = UIImage(data: dataImage)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            try? appDelegate.customCache!.addObject(dataImage, forKey: "\(self.item!.id!)")
+        
         }, onCompleted: nil, onDisposed: nil)
         
     }

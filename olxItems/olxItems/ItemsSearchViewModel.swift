@@ -74,6 +74,7 @@ class ItemsSearchViewModel {
                 if success {
                     observer.on(.next(items!))
                 }
+                
             })
             
             return Disposables.create()
@@ -107,10 +108,12 @@ class ItemsSearchViewModel {
         if let url = URL(string: urlString) {
             
             if let data = try? Data(contentsOf: url) {
-                
+                DispatchQueue.main.async{
                     if index < self.itemsVar.value.count {
                         self.itemsVar.value[index].thumbnail = data
                     }
+                }
+                
             }
             }
         }

@@ -21,6 +21,9 @@
 		FB24D8D61F02E2A9007DE46F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D11F02E2A9007DE46F /* RxSwift.framework */; };
 		FB24D8D71F02E2A9007DE46F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D11F02E2A9007DE46F /* RxSwift.framework */; };
 		FB24D8D91F02E6E6007DE46F /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */; };
+		FB4761DC1F06E54F0048870F /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4761DB1F06E54F0048870F /* Cache.framework */; };
+		FB4761DE1F06E5DC0048870F /* SwiftHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4761DD1F06E5DC0048870F /* SwiftHash.framework */; };
+		FB4761E01F06EB3A0048870F /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4761DF1F06EB3A0048870F /* ExtensionViewController.swift */; };
 		FB6E81441F05DAB7000306F5 /* PaginationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E81431F05DAB7000306F5 /* PaginationTableViewCell.swift */; };
 		FB6E81461F05F198000306F5 /* DetailItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E81451F05F198000306F5 /* DetailItemViewController.swift */; };
 		FB6E81481F060D74000306F5 /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E81471F060D74000306F5 /* ItemDetailViewModel.swift */; };
@@ -58,6 +61,9 @@
 		FB24D8D01F02E2A9007DE46F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		FB24D8D11F02E2A9007DE46F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		FB4761DB1F06E54F0048870F /* Cache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cache.framework; path = Carthage/Build/iOS/Cache.framework; sourceTree = "<group>"; };
+		FB4761DD1F06E5DC0048870F /* SwiftHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHash.framework; path = Carthage/Build/iOS/SwiftHash.framework; sourceTree = "<group>"; };
+		FB4761DF1F06EB3A0048870F /* ExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
 		FB6E81431F05DAB7000306F5 /* PaginationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationTableViewCell.swift; sourceTree = "<group>"; };
 		FB6E81451F05F198000306F5 /* DetailItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailItemViewController.swift; sourceTree = "<group>"; };
 		FB6E81471F060D74000306F5 /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
@@ -77,6 +83,8 @@
 				FB24D8D41F02E2A9007DE46F /* RxCocoa.framework in Frameworks */,
 				FB24D8D21F02E2A9007DE46F /* Alamofire.framework in Frameworks */,
 				FB24D8D61F02E2A9007DE46F /* RxSwift.framework in Frameworks */,
+				FB4761DE1F06E5DC0048870F /* SwiftHash.framework in Frameworks */,
+				FB4761DC1F06E54F0048870F /* Cache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +139,8 @@
 		FB20FABE1EFEC7B0007CB81B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB4761DD1F06E5DC0048870F /* SwiftHash.framework */,
+				FB4761DB1F06E54F0048870F /* Cache.framework */,
 				FB24D8CF1F02E2A9007DE46F /* Alamofire.framework */,
 				FB24D8D01F02E2A9007DE46F /* RxCocoa.framework */,
 				FB24D8D11F02E2A9007DE46F /* RxSwift.framework */,
@@ -191,6 +201,7 @@
 				FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */,
 				FB14FB091F048D60000F0F7E /* SearchingTableViewCell.swift */,
 				FB6E81431F05DAB7000306F5 /* PaginationTableViewCell.swift */,
+				FB4761DF1F06EB3A0048870F /* ExtensionViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -307,11 +318,15 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cache.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftHash.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cache.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftHash.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -326,11 +341,13 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cache.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cache.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -349,6 +366,7 @@
 				FB6E81481F060D74000306F5 /* ItemDetailViewModel.swift in Sources */,
 				FB20FAAE1EFEB9DC007CB81B /* ItemsSearchViewController.swift in Sources */,
 				FB8C36081F00185D00CBFB46 /* Item.swift in Sources */,
+				FB4761E01F06EB3A0048870F /* ExtensionViewController.swift in Sources */,
 				FB14FB0A1F048D61000F0F7E /* SearchingTableViewCell.swift in Sources */,
 				FB8C360A1F0018DD00CBFB46 /* ItemsManager.swift in Sources */,
 				FB20FAAC1EFEB9DC007CB81B /* AppDelegate.swift in Sources */,
