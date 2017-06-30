@@ -109,7 +109,7 @@ class ItemsSearchViewModel {
         if let url = URL(string: urlString) {
             
             if let data = try? Data(contentsOf: url) {
-                DispatchQueue.main.async{
+
                     if index < self.itemsVar.value.count {
                         
                         if self.itemsVar.value[index].thumbnailURL == urlString ||
@@ -119,9 +119,9 @@ class ItemsSearchViewModel {
                             self.itemsVar.value[index].thumbnail = data
                         }
                     }
-                }
                 
-            }
+                
+               }
             }
         }
         

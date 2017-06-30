@@ -58,7 +58,7 @@ class ItemsSearchViewController: UIViewController {
         
         //Here is where we configure our observers
         
-        //Just saves the first request of items from search
+        //Just saves the first request of items from search for the refresh
         let _ = viewModel.itemFromSearchDriver.skip(1).drive(viewModel.lastSearchFromBar)
         
         //Does stuff whenever a new http response comes
@@ -69,10 +69,10 @@ class ItemsSearchViewController: UIViewController {
             viewModel.itemsVar.value = newItems
             viewModel.pagination = 0
             viewModel.searchingPagination = false
-        
+            viewModel.isSearchingVar.value = false
             self.tableItemsView.reloadData()
             self.refreshControl.endRefreshing()
-            viewModel.isSearchingVar.value = false
+            
         }, onCompleted: nil,
         onDisposed: {
             print("disposed itemFromSearchDriver")
@@ -112,7 +112,7 @@ class ItemsSearchViewController: UIViewController {
         }, onCompleted: nil, onDisposed: nil)
         
         //Does stuff whenever items are updated
-        let _ = viewModel.items.asDriver().skip(1).drive(onNext: {[weak self] (item) in
+        let _ = viewModel.items.asDriver().skip(1).asDriver(onErrorJustReturn: [Item]()).throttle(2.5).drive(onNext: {[weak self] (item) in
             guard let `self` = self else { return }
             
             self.tableItemsView.reloadData()
@@ -169,17 +169,13 @@ extension ItemsSearchViewController : UITableViewDataSource {
         //do the pagination if it is the last row
         guard  (indexPath.row < viewModel.itemsVar.value.count), viewModel.lastQuerySearched != "" else {
             
-            
-            
             let searchingCell = tableView.dequeueReusableCell(withIdentifier: "pagination", for: indexPath) as! PaginationTableViewCell
             
             searchingCell.activity.startAnimating()
             
-            if !viewModel.searchingPagination {
                 DispatchQueue.global().async {
                     viewModel.getMoreItems()
                 }
-            }
             
             
             return searchingCell
@@ -187,9 +183,10 @@ extension ItemsSearchViewController : UITableViewDataSource {
         
         let item = viewModel.itemsVar.value[indexPath.row]
 
-        //do the pagination if it is the last row
+        //do the searchcell
         guard let itemTitle = item.title, itemTitle != "" else {
             let searchingCell = tableView.dequeueReusableCell(withIdentifier: "Searching", for: indexPath) as! SearchingTableViewCell
+            
             searchingCell.activity.startAnimating()
             searchingCell.message.text = "Searching for \(viewModel.lastQuerySearched)"
             return searchingCell
@@ -310,7 +307,14 @@ extension ItemsSearchViewController {
 extension ItemsSearchViewController : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-        searchBar.resignFirstResponder()
+        
+        
+        DispatchQueue.main.async {
+            if searchBar.isFirstResponder {
+                searchBar.resignFirstResponder()
+            }
+        } 
+        
     }
-
+    
 }
