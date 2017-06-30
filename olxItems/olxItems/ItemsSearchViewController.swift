@@ -117,6 +117,7 @@ class ItemsSearchViewController: UIViewController {
             
             self.tableItemsView.reloadData()
             
+            
         }, onCompleted: { 
             
         }, onDisposed: nil)
@@ -167,13 +168,20 @@ extension ItemsSearchViewController : UITableViewDataSource {
         
         //do the pagination if it is the last row
         guard  (indexPath.row < viewModel.itemsVar.value.count), viewModel.lastQuerySearched != "" else {
+            
+            
+            
             let searchingCell = tableView.dequeueReusableCell(withIdentifier: "pagination", for: indexPath) as! PaginationTableViewCell
             
             searchingCell.activity.startAnimating()
             
-            DispatchQueue.global().async {
-                viewModel.getMoreItems()
+            if !viewModel.searchingPagination {
+                DispatchQueue.global().async {
+                    viewModel.getMoreItems()
+                }
             }
+            
+            
             return searchingCell
         }
         
@@ -191,27 +199,18 @@ extension ItemsSearchViewController : UITableViewDataSource {
         
         cell.itemTitle.text = itemTitle
         
-    
-        
         if let imageThumnail = item.thumbnail {
             cell.activity.stopAnimating()
             cell.thumbNail.image = UIImage(data: imageThumnail)
             
         }else {
+            
             cell.thumbNail.image = UIImage()
             cell.activity.startAnimating()
             
-            
-            if let idItem = item.id, let data: Data = appDelegate.customCache!.object(forKey: "\(idItem)") {
-                cell.thumbNail.image = UIImage(data: data)
-            }else {
-                if let urlStringThumbnail = item.thumbnailURL {
-                    viewModel.retrieveImage(from: urlStringThumbnail, to: indexPath.row)
-                }
+            if let image = lookImageForItem(for: item, with: indexPath) {
+                cell.thumbNail.image = image
             }
-            
-            
-            
             
         }
         
@@ -262,6 +261,23 @@ extension ItemsSearchViewController : UITableViewDelegate {
 
 
 extension ItemsSearchViewController {
+    
+    // MARK:- helper Methods
+    
+    func lookImageForItem(for item: Item, with indexPath: IndexPath) -> UIImage?{
+        if  let idItem = item.id,
+            let urlThumnail = item.thumbnailURL,
+            let data: Data = appDelegate.customCache!.object(forKey: "\(idItem)+\(urlThumnail)") {
+            return UIImage(data: data)
+        }else {
+            if let urlStringThumbnail = item.thumbnailURL {
+                viewModel?.retrieveImage(from: urlStringThumbnail, to: indexPath.row)
+            }
+        }
+        
+        return nil
+    }
+    
     
     // MARK:- Reachabilty Methods
     

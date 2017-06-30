@@ -20,8 +20,7 @@ class DetailItemViewController: UIViewController {
     var item : Item?
     var viewModel : ItemDetailViewModel?
     
-    
-    //let disposeBag = Disposebag()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +32,27 @@ class DetailItemViewController: UIViewController {
         super.viewWillAppear(animated)
         configureView()
         
-       let _ = viewModel?.imageItemDriver?.asDriver(onErrorJustReturn: Data()).drive(onNext: { [weak self] (dataImage) in
+        if  let item = item,
+            let idItem = item.id,
+            let fullImageURL = item.fullImageURL,
+            let dataImage: Data = appDelegate.customCache!.object(forKey: "\(idItem)+\(fullImageURL)") {
             
-            guard let `self` = self else {return }
-            guard let dataImage = dataImage else {return }
-        
-            self.activity.stopAnimating()
-            self.itemImageView.image = UIImage(data: dataImage)
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            try? appDelegate.customCache!.addObject(dataImage, forKey: "\(self.item!.id!)")
-        
-        }, onCompleted: nil, onDisposed: nil)
+            itemImageView.image = UIImage(data: dataImage)
+        }
+        else {
+            let _ = viewModel?.imageItemDriver?.asDriver(onErrorJustReturn: Data()).drive(onNext: { [weak self] (dataImage) in
+                
+                guard let `self` = self else {return }
+                guard let dataImage = dataImage else {return }
+                
+                self.activity.stopAnimating()
+                self.itemImageView.image = UIImage(data: dataImage)
+                
+                try? self.appDelegate.customCache!.addObject(dataImage, forKey: "\(self.item!.id!)+\(self.item!.fullImageURL!)")
+                
+                }, onCompleted: nil, onDisposed: nil)
+        }
+       
         
     }
 
@@ -65,7 +74,14 @@ extension DetailItemViewController {
         titleLabel.text = item.title
         available.text = item.textForSold
         priceLabel.text = item.price?.displayValue ?? "Not Availabel"
-        descriptionLabel.text = item.description 
+        descriptionLabel.text = item.description
+        
+        guard let imageThumnail = item.thumbnail else {
+            return
+        }
+        
+        try? self.appDelegate.customCache!.addObject(imageThumnail, forKey: "\(self.item!.id!)+\(self.item!.thumbnailURL!)")
+        
         
     }
 }

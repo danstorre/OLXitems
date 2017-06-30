@@ -26,8 +26,11 @@ class ItemsSearchViewModel {
     }
     
     var items: Driver<[Item]> {
+        
         return itemsVar.asDriver()
     }
+    
+    
     
     //to save last Object Retrieved from the search bar..
     let lastSearchFromBar : BehaviorSubject<[Item]> = BehaviorSubject(value: [Item]())
@@ -40,7 +43,6 @@ class ItemsSearchViewModel {
     var lastQuerySearched : String = ""
     var pagination: Int = 0
     var searchingPagination: Bool = false
-    
 
     // MARK: init methods
     init(driverSearchBar: DriverSearchBarText){
@@ -74,7 +76,6 @@ class ItemsSearchViewModel {
                 if success {
                     observer.on(.next(items!))
                 }
-                
             })
             
             return Disposables.create()
@@ -110,7 +111,13 @@ class ItemsSearchViewModel {
             if let data = try? Data(contentsOf: url) {
                 DispatchQueue.main.async{
                     if index < self.itemsVar.value.count {
-                        self.itemsVar.value[index].thumbnail = data
+                        
+                        if self.itemsVar.value[index].thumbnailURL == urlString ||
+                             self.itemsVar.value[index].fullImageURL == urlString ||
+                            self.itemsVar.value[index].mediumImageURL == urlString{
+                        
+                            self.itemsVar.value[index].thumbnail = data
+                        }
                     }
                 }
                 
