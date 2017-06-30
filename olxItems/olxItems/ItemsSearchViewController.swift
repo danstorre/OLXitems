@@ -15,9 +15,6 @@ class ItemsSearchViewController: UIViewController {
     @IBOutlet weak var searchItemBar: UISearchBar!
     @IBOutlet weak var tableItemsView: UITableView!
     
-    @IBOutlet weak var topActivity: UIActivityIndicatorView!
-    @IBOutlet weak var lowActivity: UIActivityIndicatorView!
-    
     var refreshControl: UIRefreshControl!
     var viewModel : ItemsSearchViewModel?
     let disposeBag = DisposeBag()
@@ -26,8 +23,7 @@ class ItemsSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ItemsSearchViewModel(driverSearchBar: searchItemBar.rx.text.asDriver())
-        topActivity.stopAnimating()
-        lowActivity.stopAnimating()
+        
         tableItemsView.tableFooterView = UIView()
         
         refreshControl = UIRefreshControl()
@@ -51,6 +47,9 @@ class ItemsSearchViewController: UIViewController {
             guard let `self` = self else { return }
             guard let viewModel = self.viewModel else { return }
             viewModel.itemsVar.value = newItems
+            viewModel.pagination = 0
+            viewModel.searchingPagination = false
+        
             self.tableItemsView.reloadData()
             self.refreshControl.endRefreshing()
             viewModel.isSearchingVar.value = false
@@ -63,8 +62,19 @@ class ItemsSearchViewController: UIViewController {
         searchItemBar.rx.text.asDriver().skip(1).drive(onNext: { [weak self] (query) in
             guard let `self` = self else { return }
             guard let viewModel = self.viewModel else { return }
-            viewModel.isSearchingVar.value =  query == "" ? false : true
-            viewModel.lastQuerySearched = query!
+            
+            let queryTrimmed = query!.trimmingCharacters(in: [" "])
+            viewModel.isSearchingVar.value =  queryTrimmed == "" ? false : true
+            viewModel.lastQuerySearched = queryTrimmed
+            
+            if queryTrimmed == "" {
+                viewModel.itemsVar.value = [Item]()
+                viewModel.pagination = 0
+                viewModel.searchingPagination = false
+                viewModel.isSearchingVar.value = false
+                self.tableItemsView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
             }, onCompleted: nil, onDisposed: {
                 print("disposed itemFromSearchDriver")
         })
@@ -110,7 +120,7 @@ extension ItemsSearchViewController : UITableViewDataSource {
             return 0
         }
         
-        return  viewModel.lastQuerySearched != "" ? viewModel.itemsVar.value.count + 1 : viewModel.itemsVar.value.count
+        return  (viewModel.lastQuerySearched != "" && viewModel.itemsVar.value.count != 0) ? viewModel.itemsVar.value.count + 1 : viewModel.itemsVar.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,20 +129,25 @@ extension ItemsSearchViewController : UITableViewDataSource {
             return UITableViewCell()
         }
         
+        //do the pagination if it is the last row
         guard  (indexPath.row < viewModel.itemsVar.value.count), viewModel.lastQuerySearched != "" else {
             let searchingCell = tableView.dequeueReusableCell(withIdentifier: "pagination", for: indexPath) as! PaginationTableViewCell
             
             searchingCell.activity.startAnimating()
-            viewModel.getMoreItems()
+            
+            DispatchQueue.global().async {
+                viewModel.getMoreItems()
+            }
             return searchingCell
         }
         
         let item = viewModel.itemsVar.value[indexPath.row]
 
+        //do the pagination if it is the last row
         guard let itemTitle = item.title, itemTitle != "" else {
             let searchingCell = tableView.dequeueReusableCell(withIdentifier: "Searching", for: indexPath) as! SearchingTableViewCell
             searchingCell.activity.startAnimating()
-            searchingCell.message.text = "Searching"
+            searchingCell.message.text = "Searching for \(viewModel.lastQuerySearched)"
             return searchingCell
         }
         
@@ -147,7 +162,7 @@ extension ItemsSearchViewController : UITableViewDataSource {
         }else {
             cell.thumbNail.image = UIImage()
             
-            DispatchQueue.global().async {
+            DispatchQueue.global().async { 
                 if let urlStringThumbnail = item.thumbnailURL {
                     cell.activity.startAnimating()
                     viewModel.retrieveImage(from: urlStringThumbnail, to: indexPath.row)

@@ -41,7 +41,7 @@
                                                 </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14V-wJ-O9i">
                                                     <rect key="frame" x="62" y="16" width="305" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -77,8 +77,8 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ItemTitle" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Hhs-wi-vqO">
-                                                    <rect key="frame" x="76" y="14" width="281" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="76" y="15" width="281" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -125,34 +125,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="g0H-i2-feX"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uxM-Ko-5wd">
-                                <rect key="frame" x="177.5" y="84" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WyT-ZB-aoq">
-                                <rect key="frame" x="177.5" y="627" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ofv-8B-Pc5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0W9-dD-lZl"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="607-43-3Hu" secondAttribute="bottom" id="36e-E9-0TP"/>
-                            <constraint firstItem="WyT-ZB-aoq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LpO-By-aVx"/>
                             <constraint firstItem="607-43-3Hu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="URe-OM-hX4"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WyT-ZB-aoq" secondAttribute="bottom" constant="20" id="Y6A-gd-Dpm"/>
-                            <constraint firstItem="uxM-Ko-5wd" firstAttribute="top" secondItem="ofv-8B-Pc5" secondAttribute="bottom" constant="20" id="aO3-bN-AI1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ofv-8B-Pc5" secondAttribute="trailing" constant="-16" id="be6-FW-mgv"/>
                             <constraint firstItem="607-43-3Hu" firstAttribute="top" secondItem="ofv-8B-Pc5" secondAttribute="bottom" id="cye-OU-f1A"/>
                             <constraint firstAttribute="trailing" secondItem="607-43-3Hu" secondAttribute="trailing" id="v92-oG-YuY"/>
-                            <constraint firstItem="uxM-Ko-5wd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z5a-Ir-DwF"/>
                             <constraint firstItem="ofv-8B-Pc5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="zIf-Ly-aLD"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lowActivity" destination="WyT-ZB-aoq" id="x2O-kc-ifQ"/>
                         <outlet property="searchItemBar" destination="ofv-8B-Pc5" id="Zgn-PW-8Dy"/>
                         <outlet property="tableItemsView" destination="607-43-3Hu" id="usI-ho-S2i"/>
-                        <outlet property="topActivity" destination="uxM-Ko-5wd" id="yRG-o3-cPg"/>
-                        <segue destination="GeZ-hW-ygp" kind="show" id="e7u-nY-pLq"/>
+                        <segue destination="GeZ-hW-ygp" kind="show" identifier="detailItem" id="e7u-nY-pLq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

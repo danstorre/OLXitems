@@ -50,10 +50,16 @@ class ItemsSearchViewModel {
             }
             .flatMapLatest { (query) -> SharedSequence<DriverSharingStrategy, [Item]> in
                 
-                if query == "" {
+                
+                guard let query = query, query != "" else {
                     return Driver.just([Item]())
                 }
-                return ItemsSearchViewModel.getItems(itemName: query!).asDriver(onErrorJustReturn: [Item]())
+                let queryTrimmed = query.trimmingCharacters(in: [" "])
+                guard queryTrimmed != "" else {
+                    return Driver.just([Item]())
+                }
+                
+                return ItemsSearchViewModel.getItems(itemName: query).asDriver(onErrorJustReturn: [Item]())
             }
         
     }
@@ -79,10 +85,14 @@ class ItemsSearchViewModel {
             self.pagination += 1
             self.searchingPagination = true
             ItemsManager.shared.getItems(item: self.lastQuerySearched, offset: pagination, completionHandlerForGettingItems: { (success, items, erroString) in
-                if success {
-                    self.itemsVar.value += items!
-                    self.searchingPagination = false
+                
+                DispatchQueue.main.async {
+                    if success && self.searchingPagination {
+                        self.itemsVar.value += items!
+                        self.searchingPagination = false
+                    }
                 }
+                
             })
         }
         
