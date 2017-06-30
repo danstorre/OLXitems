@@ -19,9 +19,7 @@ class ItemsSearchViewModel {
     typealias DriverSearchBarText = Driver<String?>
     
     // MARK: RxSwift Observers
-    
     let itemFromSearchDriver : Driver<[Item]>
-    let lastSearchFromBar : BehaviorSubject<[Item]> = BehaviorSubject(value: [Item]())
     
     var isSearching : Driver<Bool> {
         return isSearchingVar.asDriver()
@@ -31,19 +29,23 @@ class ItemsSearchViewModel {
         return itemsVar.asDriver()
     }
     
-    var lastQuerySearched : String = ""
-    var pagination: Int = 0
-    var searchingPagination: Bool = false
-    
+    //to save last Object Retrieved from the search bar..
+    let lastSearchFromBar : BehaviorSubject<[Item]> = BehaviorSubject(value: [Item]())
     
     // MARK: RxSwift vars
     var isSearchingVar = Variable<Bool>(false)
     var itemsVar = Variable<[Item]>([Item]())
     
+    // MARK: Some More vars :p
+    var lastQuerySearched : String = ""
+    var pagination: Int = 0
+    var searchingPagination: Bool = false
+    
 
     // MARK: init methods
     init(driverSearchBar: DriverSearchBarText){
         
+        //listens whenever the user types a word on the search bar
         itemFromSearchDriver = driverSearchBar.throttle(0.3)
             .distinctUntilChanged { (first, second) -> Bool in
                 return (first == second)
@@ -78,6 +80,8 @@ class ItemsSearchViewModel {
         }
     }
     
+    // MARK: ViewModel methods
+    
     func getMoreItems(){
         
         
@@ -86,12 +90,10 @@ class ItemsSearchViewModel {
             self.searchingPagination = true
             ItemsManager.shared.getItems(item: self.lastQuerySearched, offset: pagination, completionHandlerForGettingItems: { (success, items, erroString) in
                 
-                DispatchQueue.main.async {
                     if success && self.searchingPagination {
                         self.itemsVar.value += items!
                         self.searchingPagination = false
                     }
-                }
                 
             })
         }
@@ -105,7 +107,7 @@ class ItemsSearchViewModel {
             
             if let data = try? Data(contentsOf: url) {
                 
-                DispatchQueue.main.async {
+                DispatchQueue.global().async {
                     
                     if index < self.itemsVar.value.count {
                         self.itemsVar.value[index].thumbnail = data

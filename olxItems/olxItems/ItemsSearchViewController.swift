@@ -18,30 +18,37 @@ class ItemsSearchViewController: UIViewController {
     var refreshControl: UIRefreshControl!
     var viewModel : ItemsSearchViewModel?
     let disposeBag = DisposeBag()
+    var selectedItem : Item? = nil
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel = ItemsSearchViewModel(driverSearchBar: searchItemBar.rx.text.asDriver())
         
         tableItemsView.tableFooterView = UIView()
-        
         refreshControl = UIRefreshControl()
         tableItemsView.addSubview(refreshControl)
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
       
     override func viewWillAppear(_ animated: Bool) {
         
+        self.navigationController?.navigationBar.isHidden = true
+        
         guard let viewModel = viewModel else {
             return
         }
         
+        
+        //Here is where we configure our observers
+        
+        //Just saves the first request of items from search
         let _ = viewModel.itemFromSearchDriver.skip(1).drive(viewModel.lastSearchFromBar)
         
-        //Does stuff whenever an http response came
+        //Does stuff whenever a new http response comes
         let _ = viewModel.itemFromSearchDriver.skip(1).drive( onNext: { [weak self] (newItems) in
             
             guard let `self` = self else { return }
@@ -112,6 +119,22 @@ class ItemsSearchViewController: UIViewController {
 
 }
 
+//MARK: Navigation
+extension ItemsSearchViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "detailItem" {
+        
+            let detailItemVC = segue.destination as! DetailItemViewController
+            detailItemVC.item = selectedItem
+            
+        }
+    }
+}
+
+
+//MARK: Table View methods
 extension ItemsSearchViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -178,8 +201,6 @@ extension ItemsSearchViewController : UITableViewDataSource {
 }
 
 extension ItemsSearchViewController : UITableViewDelegate {
-
-    
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if refreshControl.isRefreshing {
@@ -192,6 +213,27 @@ extension ItemsSearchViewController : UITableViewDelegate {
             self.tableItemsView.reloadData()
             self.refreshControl.endRefreshing()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        //do the pagination if it is the last row
+        guard  indexPath.row < viewModel.itemsVar.value.count else {
+            return
+        }
+        
+        selectedItem = viewModel.itemsVar.value[indexPath.row]
+        
+        self.performSegue(withIdentifier: "detailItem", sender: nil)
+        
+        
+        
     }
     
     

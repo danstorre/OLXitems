@@ -64,8 +64,8 @@ extension ItemsManager : ItemProviderAPIProtocol{
         let params : [String:AnyObject] =
             [Constants.UrlKeys.searchTerm: item as AnyObject,
              Constants.UrlKeys.location: Constants.Domain.location as AnyObject,
-             Constants.UrlKeys.pageSize: 10 as AnyObject,
-             Constants.UrlKeys.offset: paramOffSet * 10 as AnyObject]
+             Constants.UrlKeys.pageSize: 20 as AnyObject,
+             Constants.UrlKeys.offset: paramOffSet * 20 as AnyObject]
         
         networkManager.getMethod(params: params, pathMethod: Constants.Methods.searchItems, completionHandlerForGet: completionHandlerItemsFromServer)
     }

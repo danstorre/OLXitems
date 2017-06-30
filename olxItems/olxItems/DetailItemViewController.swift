@@ -10,26 +10,58 @@ import UIKit
 
 class DetailItemViewController: UIViewController {
 
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var available: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+    
+    var item : Item?
+    var viewModel : ItemDetailViewModel?
+    
+    
+    //let disposeBag = Disposebag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        
+        configureView()
+        
+        viewModel?.imageItemDriver?.asDriver(onErrorJustReturn: Data()).drive(onNext: { [weak self] (dataImage) in
+            
+            guard let `self` = self else {return }
+            self.activity.stopAnimating()
+            self.itemImageView.image = UIImage(data: dataImage!)
+            
+        }, onCompleted: nil, onDisposed: nil)
+        
     }
-    */
 
+}
+
+// MARK: - DetailItemViewController Methods
+
+extension DetailItemViewController {
+
+    func configureView(){
+        self.navigationController?.navigationBar.isHidden = false
+        activity.startAnimating()
+        guard let item = item else {
+            return
+        }
+        
+        viewModel = ItemDetailViewModel(string: item.fullImageURL ?? "")
+        
+        titleLabel.text = item.title
+        available.text = item.textForSold
+        priceLabel.text = item.price?.displayValue ?? "Not Availabel"
+        descriptionLabel.text = item.description 
+        
+    }
 }

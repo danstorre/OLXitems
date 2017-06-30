@@ -29,6 +29,13 @@ struct Item{
     var fullImage : UIImage?
     var sold : Bool?
     
+    var textForSold : String {
+        get{
+            let sold = self.sold ?? false
+            return sold ? "Sold" : "Available"
+        }
+    }
+    
     init(){
         
         id = 0
