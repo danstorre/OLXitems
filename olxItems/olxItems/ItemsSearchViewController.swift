@@ -35,7 +35,7 @@ class ItemsSearchViewController: UIViewController {
     }
       
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         
         guard let viewModel = viewModel else {
@@ -184,13 +184,12 @@ extension ItemsSearchViewController : UITableViewDataSource {
             
         }else {
             cell.thumbNail.image = UIImage()
+            cell.activity.startAnimating()
             
-            DispatchQueue.global().async { 
                 if let urlStringThumbnail = item.thumbnailURL {
-                    cell.activity.startAnimating()
                     viewModel.retrieveImage(from: urlStringThumbnail, to: indexPath.row)
                 }
-            }
+            
             
         }
         

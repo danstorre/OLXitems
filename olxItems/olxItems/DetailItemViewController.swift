@@ -30,7 +30,7 @@ class DetailItemViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         configureView()
         
         viewModel?.imageItemDriver?.asDriver(onErrorJustReturn: Data()).drive(onNext: { [weak self] (dataImage) in

@@ -103,17 +103,15 @@ class ItemsSearchViewModel {
     
     func retrieveImage(from urlString: String, to index: Int) {
         
+        DispatchQueue.global().async {
         if let url = URL(string: urlString) {
             
             if let data = try? Data(contentsOf: url) {
                 
-                DispatchQueue.global().async {
-                    
                     if index < self.itemsVar.value.count {
                         self.itemsVar.value[index].thumbnail = data
                     }
-                    
-                }
+            }
             }
         }
         
