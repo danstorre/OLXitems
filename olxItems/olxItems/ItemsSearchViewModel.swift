@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct ItemsSearchViewModel {
+class ItemsSearchViewModel {
 
     
     let disposeBag = DisposeBag()
@@ -31,6 +31,9 @@ struct ItemsSearchViewModel {
         return itemsVar.asDriver()
     }
     
+    var lastQuerySearched : String = ""
+    var pagination: Int = 0
+    var searchingPagination: Bool = false
     
     
     // MARK: RxSwift vars
@@ -67,6 +70,23 @@ struct ItemsSearchViewModel {
             
             return Disposables.create()
         }
+    }
+    
+    func getMoreItems(){
+        
+        
+        if !searchingPagination{
+            self.pagination += 1
+            self.searchingPagination = true
+            ItemsManager.shared.getItems(item: self.lastQuerySearched, offset: pagination, completionHandlerForGettingItems: { (success, items, erroString) in
+                if success {
+                    self.itemsVar.value += items!
+                    self.searchingPagination = false
+                }
+            })
+        }
+        
+        
     }
     
     func retrieveImage(from urlString: String, to index: Int) {

@@ -21,6 +21,7 @@
 		FB24D8D61F02E2A9007DE46F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D11F02E2A9007DE46F /* RxSwift.framework */; };
 		FB24D8D71F02E2A9007DE46F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB24D8D11F02E2A9007DE46F /* RxSwift.framework */; };
 		FB24D8D91F02E6E6007DE46F /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */; };
+		FB6E81441F05DAB7000306F5 /* PaginationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E81431F05DAB7000306F5 /* PaginationTableViewCell.swift */; };
 		FB8C36081F00185D00CBFB46 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C36071F00185D00CBFB46 /* Item.swift */; };
 		FB8C360A1F0018DD00CBFB46 /* ItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C36091F0018DD00CBFB46 /* ItemsManager.swift */; };
 		FB8C360C1F001CFD00CBFB46 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C360B1F001CFD00CBFB46 /* Network.swift */; };
@@ -55,6 +56,7 @@
 		FB24D8D01F02E2A9007DE46F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		FB24D8D11F02E2A9007DE46F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		FB6E81431F05DAB7000306F5 /* PaginationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationTableViewCell.swift; sourceTree = "<group>"; };
 		FB8C36071F00185D00CBFB46 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FB8C36091F0018DD00CBFB46 /* ItemsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsManager.swift; sourceTree = "<group>"; };
 		FB8C360B1F001CFD00CBFB46 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				FB24D8D81F02E6E6007DE46F /* ItemTableViewCell.swift */,
 				FB14FB091F048D60000F0F7E /* SearchingTableViewCell.swift */,
+				FB6E81431F05DAB7000306F5 /* PaginationTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				FB8C360A1F0018DD00CBFB46 /* ItemsManager.swift in Sources */,
 				FB20FAAC1EFEB9DC007CB81B /* AppDelegate.swift in Sources */,
 				FB8C36131F00208200CBFB46 /* Reachability.swift in Sources */,
+				FB6E81441F05DAB7000306F5 /* PaginationTableViewCell.swift in Sources */,
 				FB8C36101F00203E00CBFB46 /* ItemsSearchViewModel.swift in Sources */,
 				FB8C36151F00223D00CBFB46 /* Constants.swift in Sources */,
 			);

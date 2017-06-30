@@ -65,7 +65,7 @@ extension ItemsManager : ItemProviderAPIProtocol{
             [Constants.UrlKeys.searchTerm: item as AnyObject,
              Constants.UrlKeys.location: Constants.Domain.location as AnyObject,
              Constants.UrlKeys.pageSize: 10 as AnyObject,
-             Constants.UrlKeys.offset: paramOffSet as AnyObject]
+             Constants.UrlKeys.offset: paramOffSet * 10 as AnyObject]
         
         networkManager.getMethod(params: params, pathMethod: Constants.Methods.searchItems, completionHandlerForGet: completionHandlerItemsFromServer)
     }

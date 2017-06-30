@@ -36,13 +36,8 @@ class ItemsSearchViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
+      
     override func viewWillAppear(_ animated: Bool) {
-        
-        /* this is commented out to just have a small peek about how rx cocoa can help us out
-        viewModel?.itemFromSearchDriver.skip(1).drive(tableItemsView.rx.items(cellIdentifier: "Cell")) { (index, item, cell) in
-            cell.textLabel?.text = item.title
-            }.disposed(by: disposeBag)*/
         
         guard let viewModel = viewModel else {
             return
@@ -69,7 +64,7 @@ class ItemsSearchViewController: UIViewController {
             guard let `self` = self else { return }
             guard let viewModel = self.viewModel else { return }
             viewModel.isSearchingVar.value =  query == "" ? false : true
-            
+            viewModel.lastQuerySearched = query!
             }, onCompleted: nil, onDisposed: {
                 print("disposed itemFromSearchDriver")
         })
@@ -89,8 +84,6 @@ class ItemsSearchViewController: UIViewController {
         //Does stuff whenever items are updated
         viewModel.items.asDriver().skip(1).drive(onNext: {[weak self] (item) in
             guard let `self` = self else { return }
-            guard let viewModel = self.viewModel else { return }
-            
             
             self.tableItemsView.reloadData()
             
@@ -106,11 +99,6 @@ class ItemsSearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func configureViewModel(){
-    
-        
-    }
-
 
 }
 
@@ -122,13 +110,21 @@ extension ItemsSearchViewController : UITableViewDataSource {
             return 0
         }
         
-        return viewModel.itemsVar.value.count
+        return  viewModel.lastQuerySearched != "" ? viewModel.itemsVar.value.count + 1 : viewModel.itemsVar.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let viewModel = viewModel else {
             return UITableViewCell()
+        }
+        
+        guard  (indexPath.row < viewModel.itemsVar.value.count), viewModel.lastQuerySearched != "" else {
+            let searchingCell = tableView.dequeueReusableCell(withIdentifier: "pagination", for: indexPath) as! PaginationTableViewCell
+            
+            searchingCell.activity.startAnimating()
+            viewModel.getMoreItems()
+            return searchingCell
         }
         
         let item = viewModel.itemsVar.value[indexPath.row]

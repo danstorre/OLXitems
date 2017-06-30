@@ -99,6 +99,26 @@
                                             <outlet property="thumbNail" destination="gcG-fy-Ve5" id="Qow-NP-l9D"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pagination" id="RV4-WW-qhe" customClass="PaginationTableViewCell" customModule="olxItems" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RV4-WW-qhe" id="TWs-H3-UGC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Hic-x9-EmU">
+                                                    <rect key="frame" x="177.5" y="14" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hic-x9-EmU" firstAttribute="centerY" secondItem="TWs-H3-UGC" secondAttribute="centerY" id="HER-HH-cOh"/>
+                                                <constraint firstItem="Hic-x9-EmU" firstAttribute="centerX" secondItem="TWs-H3-UGC" secondAttribute="centerX" id="NDu-Fg-MhL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activity" destination="Hic-x9-EmU" id="cng-38-Hij"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="qmt-07-paT"/>
