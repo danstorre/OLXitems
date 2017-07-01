@@ -4,7 +4,7 @@ simple app that consumes an olx service for retrieving items in the www.olx.com.
 # Config
 Git clone https://github.com/danstorre/OLXitems.git <br />
 go to the project’s folder and run <br />
-
+<br />
 	**carthage bootstrap --platform iOS --no-use-binaries** <br />
 
 run the app.<br />
